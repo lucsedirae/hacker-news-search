@@ -1,8 +1,8 @@
 import React, { Fragment, useContext } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 
-const Results = ({ results }) => {
-  const { created_at_i, title } = results;
+const Results = () => {
+  const { results } = useContext(SearchContext);
 
   return (
     <Fragment>
@@ -14,12 +14,14 @@ const Results = ({ results }) => {
             <div className='container news-card'>
               <h3>{result.title}</h3>
               <span>{result.created_at}</span>
-              <a href={result.url} target='_blank'>
+              <a href={result.url} target='_blank' rel='noreferrer'>
                 {result.url}
               </a>
               <h3>Tags:</h3>
               {result._tags.map((tag) => (
-                <span key={tag}className="tag">{tag}</span>
+                <span key={tag.concat(Math.random())} className='tag'>
+                  {tag}
+                </span>
               ))}
             </div>
           </div>

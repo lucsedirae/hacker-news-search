@@ -2,8 +2,10 @@ import React, { Fragment, useContext } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 import axios from 'axios';
 
+import Results from './Results';
+
 const Search = () => {
-  const { query, setQuery, results, setResults, setHistory, history } =
+  const { query, setQuery, setResults, setHistory, history } =
     useContext(SearchContext);
 
   const handleChange = (e) => {
@@ -12,14 +14,12 @@ const Search = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(query);
+    await axios
+      .get(`http://hn.algolia.com/api/v1/search?query=${query}`)
+      .then((res) => {
+        setResults(res.data.hits);
+      });
     setHistory([query, ...history]);
-    // await axios
-    //   .get(`http://hn.algolia.com/api/v1/search?query=${query}`)
-    //   .then((res) => {
-    //     setResults(res.data.hits);
-    //     console.log(`Raw: ${res.data}`);
-    //   });
   };
 
   return (
@@ -37,8 +37,7 @@ const Search = () => {
         <button onClick={handleSubmit} type='submit'>
           Submit
         </button>
-
-        {/* {console.log(`Results: ${results}`)} */}
+        <Results />
       </div>
     </Fragment>
   );
