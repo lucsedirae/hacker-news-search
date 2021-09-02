@@ -1,24 +1,56 @@
-import logo from './logo.svg';
+//* Dependencies
+import React, { useState, useMemo } from 'react';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './App.css';
+import { SearchContext } from './context/SearchContext';
 
+//* Custom components
+import History from './components/history/History';
+import Home from './components/pages/Home';
+import Layout from './components/layout/Layout';
+import Search from './components/search/Search';
+
+//* Exported component
 function App() {
+  const [results, setResults] = useState([]);
+  const [query, setQuery] = useState('');
+  const [history, setHistory] = useState([]);
+
+  const providerValue = useMemo(
+    () => ({ query, setQuery, results, setResults, history, setHistory }),
+    [query, setQuery, results, setResults, history, setHistory]
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <div className='container'>
+          <ul>
+            <li>
+              <Link className='link' to='/'>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link className='link' to='/search'>
+                Search
+              </Link>
+            </li>
+            <li>
+              <Link className='link' to='/history'>
+                History
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <SearchContext.Provider value={providerValue}>
+          <Route path='/' exact component={Home} />
+          <Route path='/search' exact component={Search} />
+          <Route path='/history' exact component={History} />
+        </SearchContext.Provider>
+      </Layout>
+    </Router>
   );
 }
 
