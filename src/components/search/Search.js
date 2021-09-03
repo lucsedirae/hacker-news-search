@@ -1,17 +1,23 @@
+//* Dependencies
 import React, { Fragment, useContext } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 import axios from 'axios';
 
+//* Custom components
 import Results from './Results';
 
+//* Exported component
 const Search = () => {
+  //* Imports state from context
   const { query, setQuery, setResults, setHistory, history } =
     useContext(SearchContext);
 
+    //* Sets query value on input change
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
+  //* Requests search results from API and adds query to history state
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
@@ -25,7 +31,7 @@ const Search = () => {
   return (
     <Fragment>
       <h2>Search Page</h2>
-      <div className='container'>
+      <div className='container flex-col'>
         <input
           type='text'
           id='search'
@@ -34,7 +40,7 @@ const Search = () => {
           onChange={handleChange}
         />
 
-        <button onClick={handleSubmit} type='submit'>
+        <button onClick={handleSubmit} type='submit' className='btn'>
           Submit
         </button>
         <Results />
