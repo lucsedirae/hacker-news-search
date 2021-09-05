@@ -1,15 +1,20 @@
-import React from 'react';
+//* Dependencies
+import React, { Fragment } from 'react';
 
+//* Custom components
+import Footer from './Footer';
+import Header from './Header';
+
+//* Exported component
 const Layout = ({ children }) => {
   return (
-    <div>
-      <h1 className='brand center'>Hacker News Search</h1>
+    <Fragment>
       <main className='container'>
-        <div className='container'>
-        </div>
-      {children}
+        <Header />
+        {children}
       </main>
-    </div>
+      <Footer />
+    </Fragment>
   );
 };
 

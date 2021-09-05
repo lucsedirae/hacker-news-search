@@ -1,7 +1,7 @@
 //* Dependencies
 import React, { Fragment, useContext } from 'react';
-import { SearchContext } from '../../context/SearchContext';
 import axios from 'axios';
+import { SearchContext } from '../../context/SearchContext';
 
 //* Custom components
 import Results from './Results';
@@ -12,7 +12,7 @@ const Search = () => {
   const { query, setQuery, setResults, setHistory, history } =
     useContext(SearchContext);
 
-    //* Sets query value on input change
+  //* Sets query value on input change
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
@@ -30,8 +30,8 @@ const Search = () => {
 
   return (
     <Fragment>
-      <h2>Search Page</h2>
-      <div className='container flex-col'>
+      <div className='container'>
+        <h2 className='center'>Search Page</h2>
         <input
           type='text'
           id='search'

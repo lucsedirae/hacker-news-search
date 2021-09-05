@@ -16,6 +16,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [history, setHistory] = useState([]);
 
+  //* Stores state variables to be passed into context provider value attribute
   const providerValue = useMemo(
     () => ({ query, setQuery, results, setResults, history, setHistory }),
     [query, setQuery, results, setResults, history, setHistory]
@@ -24,8 +25,7 @@ function App() {
   return (
     <Router>
       <Layout>
-        <div className='container'>
-          <ul>
+          <ul className="center">
             <li>
               <Link className='link' to='/'>
                 Home
@@ -42,13 +42,12 @@ function App() {
               </Link>
             </li>
           </ul>
-        </div>
 
-        <SearchContext.Provider value={providerValue}>
-          <Route path='/' exact component={Home} />
-          <Route path='/search' exact component={Search} />
-          <Route path='/history' exact component={History} />
-        </SearchContext.Provider>
+          <SearchContext.Provider value={providerValue}>
+            <Route path='/' exact component={Home} />
+            <Route path='/search' exact component={Search} />
+            <Route path='/history' exact component={History} />
+          </SearchContext.Provider>
       </Layout>
     </Router>
   );

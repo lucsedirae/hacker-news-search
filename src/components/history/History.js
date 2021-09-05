@@ -8,9 +8,10 @@ const History = () => {
 
   return (
     <Fragment>
-      <h2>History Page</h2>
+      <h2 className='center'>History Page</h2>
       <div className='container'>
-        <ul>
+        <h3 className="center block ">This session's search history:</h3>
+        <ul className='center body-text'>
           {history.length === 0 ? (
             <div>Your previous search results appear here</div>
           ) : (
