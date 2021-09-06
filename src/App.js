@@ -25,7 +25,8 @@ function App() {
   return (
     <Router>
       <Layout>
-          <ul className="center">
+        <nav>
+          <ul className='center'>
             <li>
               <Link className='link' to='/'>
                 Home
@@ -42,12 +43,13 @@ function App() {
               </Link>
             </li>
           </ul>
+        </nav>
 
-          <SearchContext.Provider value={providerValue}>
-            <Route path='/' exact component={Home} />
-            <Route path='/search' exact component={Search} />
-            <Route path='/history' exact component={History} />
-          </SearchContext.Provider>
+        <SearchContext.Provider value={providerValue}>
+          <Route path='/' exact component={Home} />
+          <Route path='/search' exact component={Search} />
+          <Route path='/history' exact component={History} />
+        </SearchContext.Provider>
       </Layout>
     </Router>
   );
