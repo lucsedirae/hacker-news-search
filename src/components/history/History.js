@@ -9,7 +9,6 @@ const History = () => {
   return (
     <Fragment>
       <h2 className='center'>History Page</h2>
-      <div className='container'>
         <h3 className="center block ">This session's search history:</h3>
         <ul className='center body-text'>
           {history.length === 0 ? (
@@ -22,7 +21,6 @@ const History = () => {
             ))
           )}
         </ul>
-      </div>
     </Fragment>
   );
 };

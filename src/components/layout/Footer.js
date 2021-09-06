@@ -13,6 +13,14 @@ const Footer = () => {
           rel='noreferrer'
         >
           GitHub
+        </a>{' '}
+        -{' '}
+        <a
+          href='https://twitter.com/jondeavers'
+          target='_blank'
+          rel='noreferrer'
+        >
+          Twitter
         </a>
       </footer>
     </Fragment>

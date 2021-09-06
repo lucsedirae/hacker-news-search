@@ -9,9 +9,9 @@ import Header from './Header';
 const Layout = ({ children }) => {
   return (
     <Fragment>
+      <Header />
       <main className='container'>
-        <Header />
-        {children}
+        <div className='content'>{children}</div>
       </main>
       <Footer />
     </Fragment>

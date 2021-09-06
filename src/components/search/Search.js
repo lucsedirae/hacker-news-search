@@ -30,7 +30,6 @@ const Search = () => {
 
   return (
     <Fragment>
-      <div className='container'>
         <h2 className='center'>Search Page</h2>
         <input
           type='text'
@@ -44,7 +43,6 @@ const Search = () => {
           Submit
         </button>
         <Results />
-      </div>
     </Fragment>
   );
 };

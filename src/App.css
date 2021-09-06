@@ -1,12 +1,8 @@
 /** Style sheet is organized by selector type and sorted by alphabetical order*/
 
 :root {
-  --primary-color: #0fcfa2;
-  --secondary-color: #ff7a00;
-  --primary-translucent: rgba(15, 207, 162, 0.75);
-  --secondary-translucent: rgb(255, 122, 0.85);
+  --border: black;
   --disabled: grey;
-  --menu-speed: 0.75s;
   --text: 1.25rem;
   --large: 2rem;
   --xl: 3rem;
@@ -23,13 +19,20 @@
 }
 
 /** Elements */
+body {
+  min-height: 90%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
 html {
   font-family: 'Open Sans', sans-serif;
   font-size: 62.5%;
+  height: 100%;
 }
 
 input[type='text'] {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--border);
   padding: 3px;
   width: 20rem;
   margin: 3px;
@@ -66,10 +69,14 @@ li {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 .disabled {
@@ -78,6 +85,11 @@ li {
 
 .flex-col {
   flex-direction: column;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 1rem;
 }
 
 .link {
@@ -111,7 +123,7 @@ li {
     width: 90%;
   }
   .news-card {
-    width: 60%;
+    width: 75%;
     height: 18rem;
     padding: 1rem;
   }
